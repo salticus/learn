@@ -105,14 +105,12 @@ from PySide.QtCore import QObject
 
 # There are a number of macros used in Qt that are replaced with classes in PySide
 from PySide.QtCore import Property
-#from PySide import Signal
 
 class Person(QObject):
     """
         use unicode instead of QString
     """
 
-    
     # * person.h *
     # private:
     #     QString m_name;
@@ -143,10 +141,6 @@ class Person(QObject):
     # void setName(const QString &);
     def setName(self, value):
         self._name = value
-        # self.nameChanged.emit()
-
-    # nameChanged = Signal()
-    # shoeSizeChanged = Signal()
 
     name = Property(unicode, getName, setName)
     shoeSize = Property(int, getShoeSize, setShoeSize)
