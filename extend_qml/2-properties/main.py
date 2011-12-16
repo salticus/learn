@@ -82,8 +82,13 @@ if __name__ == '__main__':
             qWarning("{}".format(party.guest(x)))
     # } else {
     else:
+        # usual approach failed here: needed extract all the errors from a
+        # list, and then cast them to strings.
+        # trying to cast to unicode resulted in an incomplete error message
+        for x in component.errors():
+            qWarning(str(x))
         # qWarning() << component.errors();
-        qWarning(component.errors())
+        # qWarning(component.errors())
 
     # return 0;
     # nothing equivalent here
