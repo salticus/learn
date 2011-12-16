@@ -1,8 +1,8 @@
 """
 
-PySide.QtGui . QApplication
+PySide.QtGui .QApplication
 
-Original Source: 
+Original Source:
 #include <QCoreApplication>
 #include <QDeclarativeEngine>
 #include <QDeclarativeComponent>
@@ -48,7 +48,7 @@ from PySide.QtCore import qWarning, QUrl
 #include "person.h"
 from person import Person
 #include "birthdayparty.h"
-from birthdayparty import 
+from birthdayparty import BirthdayParty
 
 
 # int main(int argc, char ** argv)
@@ -58,6 +58,8 @@ if __name__ == '__main__':
 
     # qmlRegisterType<Person>("People", 1,0, "Person");
     qmlRegisterType(Person, 'People', 1, 0, 'Person');
+    # qmlRegisterType<BirthdayParty>("People", 1,0, "BirthdayParty");
+    qmlRegisterType(BirthdayParty, 'People', 1, 0, 'BirthdayParty');
 
     # QDeclarativeEngine engine;
     engine = QDeclarativeEngine()
@@ -65,15 +67,19 @@ if __name__ == '__main__':
     # QDeclarativeComponent component(&engine, QUrl("qrc:example.qml"));
     component = QDeclarativeComponent(engine, QUrl("example.qml"))
 
-    # Person *person = qobject_cast<Person *>(component.create());
-    person = component.create()
+    # BirthdayParty *party = qobject_cast<BirthdayParty *>(component.create());
+    party = component.create()
 
-    # if (person) {
-    if person:
-        # qWarning() << "The person's name is" << person->name();
-        # qWarning() << "They wear a" << person->shoeSize() << "sized shoe";
-        qWarning("The person's name is {p.name}".format(p=person))
-        qWarning("They wear a {p.shoeSize} sized shoe".format(p=person))
+    # if (party && party->host()) {
+    if party and party.host:
+        # qWarning() << party->host()->name() << "is having a birthday!";
+        # qWarning() << "They are inviting:";
+        qWarning("{host.name} is having a birthday!".format(host=party.host))
+        qWarning("They are inviting:")
+        # for (int ii = 0; ii < party->guestCount(); ++ii)
+            # qWarning() << "   " << party->guest(ii)->name();
+        for x in range(party.guestCount()):
+            qWarning("{}".format(party.guest(x)))
     # } else {
     else:
         # qWarning() << component.errors();

@@ -123,7 +123,7 @@ from person import Person
 
 class BirthdayParty(QObject):
     """
-        use unicode instead of QString
+    Use unicode instead of QString
     """
 
     # * birthdayparty.h *
@@ -131,8 +131,9 @@ class BirthdayParty(QObject):
     #     Person *m_host;
     #     QList<Person *> m_guests;
     # * birthdayparty.cpp *
-    # BirthdayParty::BirthdayParty(QObject *parent) : QObject(parent), m_host(0)
 
+    #.h   BirthdayParty(QObject *parent = 0);
+    #.cpp BirthdayParty::BirthdayParty(QObject *parent) : QObject(parent), m_host(0) {}
     def __init__(self, parent=None):
         # these are automatic constructors in C++
         # : QObject(parent), m_host(0)
@@ -156,6 +157,7 @@ class BirthdayParty(QObject):
     def setHost(self, c):
         self._host = c
 
+    # Q_PROPERTY(Person *host READ host WRITE setHost)
     host = Property(Person, getHost, setHost)
 
     #.h   int guestCount() const;
@@ -163,13 +165,22 @@ class BirthdayParty(QObject):
     def guestCount(self):
         return len(self._guests)
 
-    # Person *guest(int) const;
-    # Person *BirthdayParty::guest(int index) const
+    #.h   Person *guest(int) const;
+    #.cpp Person *BirthdayParty::guest(int index) const
     def guest(self, index):
         return self._guests[index]
 
-    # nameChanged = Signal()
-    # shoeSizeChanged = Signal()
+    #.h   QDeclarativeListProperty<Person> guests();
+    #.cpp QDeclarativeListProperty<Person> BirthdayParty::guests() {
+    #         return QDeclarativeListProperty<Person>(this, m_guests); }
+    # TODO figure out how to instantiate/return this correctly. Check out the
+    # following for guidance.
+    # http://developer.qt.nokia.com/doc/qt-4.8/qdeclarativelistproperty.html
 
-    name = Property(unicode, getName, setName)
-    shoeSize = Property(int, getShoeSize, setShoeSize)
+    # guests -> getGuests (python doesn't support overloading functions/attributes)
+    def getGuests(self):
+        return self._guests
+
+    # Q_PROPERTY(QDeclarativeListProperty<Person> guests READ guests)
+    # guests -> getGuests (python doesn't support overloading functions/attributes)
+    guests = ListProperty(Person, getGuests)

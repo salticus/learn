@@ -2,7 +2,7 @@
 
 PySide.QtGui . QApplication
 
-Original Source: 
+Original Source:
 #include <QCoreApplication>
 #include <QDeclarativeEngine>
 #include <QDeclarativeComponent>
