@@ -1,34 +1,50 @@
 Small Examples
 ==============
 
-`extending_qml` 
+extending_qml
 -------------
+
+NOTE: this has been stagnant for several years, with no definite plans to complete the exercise. But I keep it around in case I ever cross paths with pyside/qml development again.
+
 
 Extending qml using PySide. Adapted from Nokia documentation on extending qml using C++. Based on tutorial at
 http://doc.qt.nokia.com/latest/qml-extending.html
 
 Two goals:
+
     1. Provide easily adaptable examples of qml extensions in Python.
     2. Provide examples of adapting C++ to PySide. Since C++ examples seem to be more plentiful than PySide examples, this may help Python developers learn to adapt C++ examples to PySide.
 
 Also, gain a more fundamental understanding of Qt and Qml.
 
-1-[`adding_types`](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-adding.html)
+1-[adding_types](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-adding.html)
+
 2-[properties](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-properties.html)
+
 3-[coercion](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-coercion.html)
+
 4.5-[methods](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-methods.html)
+
 4-[default](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-default.html)
+
 5-[grouped](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-grouped.html)
+
 6-[attached](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-attached.html)
+
 7-[signal](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-signal.html)
+
 8-[valuesource](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-valuesource.html)
+
 9-[binding](http://doc.qt.nokia.com/latest/declarative-cppextensions-referenceexamples-binding.html)
+
 
 Licensed under the GNU Free Documentation License, as original documentation falls under that license. Reference copy at http://www.gnu.org/licenses/fdl.html
 
-Actually, each individual source snippet is prefixed with a BSD license. You work it out. Since this is mostly pedagogical in intent, I don't see it mattering a whole lot, one way or the other.
+Actually, each individual source snippet is prefixed with a BSD license. You work it out. This is mostly pedagogical in intent.
 
 For reference, all code snippets should have the following prepended.
+
+```
     /****************************************************************************
      **
      ** Copyright (C) 2011 Nokia Corporation and/or its subsidiary(-ies).
@@ -68,3 +84,4 @@ For reference, all code snippets should have the following prepended.
      ** $QT_END_LICENSE$
      **
      ****************************************************************************/
+```
